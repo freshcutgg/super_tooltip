@@ -197,7 +197,9 @@ class _SuperTooltipState extends State<SuperTooltip>
     return CompositedTransformTarget(
       link: _layerLink,
       child: GestureDetector(
-        onTap: _superTooltipController!.showTooltip,
+        behavior: HitTestBehavior.translucent,
+        // no need to show tooltip on tap
+        // onTap: _superTooltipController!.showTooltip,
         onLongPress: widget.onLongPress,
         child: widget.child,
       ),
