@@ -289,7 +289,7 @@ class _SuperTooltipState extends State<SuperTooltip>
             builder: (context) => FadeTransition(
               opacity: animation,
               child: GestureDetector(
-                onTap: _superTooltipController!.hideTooltip,
+                onTapDown: (_) => _superTooltipController!.hideTooltip,
                 child: Container(
                   key: SuperTooltip.barrierKey,
                   decoration: ShapeDecoration(
