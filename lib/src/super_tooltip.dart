@@ -289,6 +289,7 @@ class _SuperTooltipState extends State<SuperTooltip>
             builder: (context) => FadeTransition(
               opacity: animation,
               child: Listener(
+                behavior: HitTestBehavior.translucent,
                 onPointerUp: (_) => _superTooltipController!.hideTooltip(),
                 child: IgnorePointer(
                   child: Container(
