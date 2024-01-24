@@ -288,17 +288,19 @@ class _SuperTooltipState extends State<SuperTooltip>
         ? OverlayEntry(
             builder: (context) => FadeTransition(
               opacity: animation,
-              child: GestureDetector(
-                onTapDown: (_) => _superTooltipController!.hideTooltip,
-                child: Container(
-                  key: SuperTooltip.barrierKey,
-                  decoration: ShapeDecoration(
-                    shape: ShapeOverlay(
-                      clipAreaCornerRadius: widget.touchThroughAreaCornerRadius,
-                      clipAreaShape: widget.touchThroughAreaShape,
-                      clipRect: widget.touchThroughArea,
-                      barrierColor: barrierColor,
-                      overlayDimensions: widget.overlayDimensions,
+              child: Listener(
+                onPointerUp: (_) => _superTooltipController!.hideTooltip(),
+                child: IgnorePointer(
+                  child: Container(
+                    key: SuperTooltip.barrierKey,
+                    decoration: ShapeDecoration(
+                      shape: ShapeOverlay(
+                        clipAreaCornerRadius: widget.touchThroughAreaCornerRadius,
+                        clipAreaShape: widget.touchThroughAreaShape,
+                        clipRect: widget.touchThroughArea,
+                        barrierColor: barrierColor,
+                        overlayDimensions: widget.overlayDimensions,
+                      ),
                     ),
                   ),
                 ),
