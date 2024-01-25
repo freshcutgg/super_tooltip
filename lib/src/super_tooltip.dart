@@ -442,14 +442,10 @@ class _SuperTooltipState extends State<SuperTooltip>
   }
 
   _removeEntries() {
-    if (_entry?.mounted ?? false) {
-      _entry?.remove();
-    }
+    _entry?.remove();
     _entry = null;
 
-    if (_barrierEntry?.mounted ?? false) {
-      _barrierEntry?.remove();
-    }
+    _barrierEntry?.remove();
     _barrierEntry = null;
 
     blur?.remove();
