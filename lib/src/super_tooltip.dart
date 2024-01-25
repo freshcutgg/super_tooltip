@@ -296,7 +296,8 @@ class _SuperTooltipState extends State<SuperTooltip>
                     key: SuperTooltip.barrierKey,
                     decoration: ShapeDecoration(
                       shape: ShapeOverlay(
-                        clipAreaCornerRadius: widget.touchThroughAreaCornerRadius,
+                        clipAreaCornerRadius:
+                            widget.touchThroughAreaCornerRadius,
                         clipAreaShape: widget.touchThroughAreaShape,
                         clipRect: widget.touchThroughArea,
                         barrierColor: barrierColor,
@@ -327,6 +328,7 @@ class _SuperTooltipState extends State<SuperTooltip>
             ),
           )
         : null;
+
     _entry = OverlayEntry(
       builder: (BuildContext context) => FadeTransition(
         opacity: animation,
@@ -442,8 +444,10 @@ class _SuperTooltipState extends State<SuperTooltip>
   _removeEntries() {
     _entry?.remove();
     _entry = null;
+
     _barrierEntry?.remove();
-    _entry = null;
+    _barrierEntry = null;
+
     blur?.remove();
   }
 
