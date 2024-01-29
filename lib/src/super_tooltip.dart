@@ -337,34 +337,35 @@ class _SuperTooltipState extends State<SuperTooltip>
             link: _layerLink,
             showWhenUnlinked: false,
             offset: offsetToTarget,
-            child: CustomSingleChildLayout(
-              delegate: TooltipPositionDelegate(
-                preferredDirection: preferredDirection,
-                constraints: constraints,
-                top: top,
-                bottom: bottom,
-                left: left,
-                right: right,
-                target: target,
-                // verticalOffset: widget.verticalOffset,
-                overlay: overlay,
-                margin: widget.minimumOutsideMargin,
-                snapsFarAwayHorizontally: widget.snapsFarAwayHorizontally,
-                snapsFarAwayVertically: widget.snapsFarAwayVertically,
-              ),
-              // TD:  Text fields and such will need a material ancestor
-              // In order to function properly. Need to find more elegant way
-              // to add this.
-              child: Stack(
-                fit: StackFit.passthrough,
-                children: <Widget>[
-                  Material(
-                    color: Colors.transparent,
-                    child: GestureDetector(
-                      onTap: () {
-                        if (widget.hideTooltipOnTap)
-                          _superTooltipController!.hideTooltip();
-                      },
+            child: GestureDetector(
+              onTap: () {
+                if (widget.hideTooltipOnTap) {
+                  _superTooltipController!.hideTooltip();
+                }
+              },
+              child: CustomSingleChildLayout(
+                delegate: TooltipPositionDelegate(
+                  preferredDirection: preferredDirection,
+                  constraints: constraints,
+                  top: top,
+                  bottom: bottom,
+                  left: left,
+                  right: right,
+                  target: target,
+                  // verticalOffset: widget.verticalOffset,
+                  overlay: overlay,
+                  margin: widget.minimumOutsideMargin,
+                  snapsFarAwayHorizontally: widget.snapsFarAwayHorizontally,
+                  snapsFarAwayVertically: widget.snapsFarAwayVertically,
+                ),
+                // TD:  Text fields and such will need a material ancestor
+                // In order to function properly. Need to find more elegant way
+                // to add this.
+                child: Stack(
+                  fit: StackFit.passthrough,
+                  children: <Widget>[
+                    Material(
+                      color: Colors.transparent,
                       child: Container(
                         key: SuperTooltip.bubbleKey,
                         margin: SuperUtils.getTooltipMargin(
@@ -408,9 +409,9 @@ class _SuperTooltipState extends State<SuperTooltip>
                         child: widget.content,
                       ),
                     ),
-                  ),
-                  _buildCloseButton(),
-                ],
+                    _buildCloseButton(),
+                  ],
+                ),
               ),
             ),
           ),
